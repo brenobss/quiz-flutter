@@ -8,14 +8,15 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Quiz Flutter')),
+          title: Center(child: Text('Quiz da Computação')),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              FlutterLogo(
-                size: 250,
+              Image.asset(
+                'assets/images/logo.png',
+                width: 300,
               ),
               ElevatedButton(
                 onPressed: () {
