@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/resultado.dart';
+import 'quiz_data.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -15,42 +16,7 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(BuildContext context) {
-    List quiz = [
-      {
-        "pergunta": "O que é o Flutter?",
-        "respostas": [
-          "Uma linguagem",
-          "Um aplicativo",
-          "Um SDK",
-          "Um notebook"
-        ],
-        "alternativa_correta": 3,
-      }
-    ];
-
-    quiz.add({
-      "pergunta": "O que é o Dart?",
-      "respostas": [
-        "Uma linguagem de programação",
-        "Uma JDK",
-        "Uma IDE",
-        "Uma extensão do chrome",
-      ],
-      "alternativa_correta": 1,
-    });
-    quiz.add({
-      "pergunta": "O que são testes smell?",
-      "respostas": [
-        "Uma linguagem de compilação",
-        "Teste unitário",
-        "Um analisador de testes",
-        "Teste de usabilidade",
-      ],
-      "alternativa_correta": 3,
-    });
-    // print("Dados do quiz:");
-    // print(quiz);
-
+    quiz.shuffle();
     void respondeu(int respostaNumero) {
       setState(() {
         if (quiz[numeroPergunta - 1]['alternativa_correta'] == respostaNumero) {
@@ -66,7 +32,7 @@ class _QuizState extends State<Quiz> {
 
     void atualizaPergunta() {
       setState(() {
-        if (numeroPergunta == 3) {
+        if (numeroPergunta == 10) {
           print('Terminou o quiz');
           print('$acertos');
           Navigator.pushNamed(context, 'Resultado',
