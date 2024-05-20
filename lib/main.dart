@@ -5,5 +5,18 @@ import 'package:quiz/resultado.dart';
 import 'home_page.dart';
 
 void main() {
-  runApp(const Resultado(acertos: 7));
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(initialRoute: '/', routes: {
+      '/': ((context) => HomePage()),
+      'Quiz': (context) => Quiz(),
+      Resultado.routeName: (context) => Resultado(),
+    });
+  }
 }

@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  print('clicou');
+                  Navigator.pushNamed(context, 'Quiz');
                 },
                 child: Text(
                   'Jogar',

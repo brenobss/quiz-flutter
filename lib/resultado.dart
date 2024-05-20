@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class Resultado extends StatelessWidget {
-  const Resultado({super.key, required this.acertos});
+class Argumentos {
+  int acertos = 0;
+  Argumentos(this.acertos);
+}
 
-  final int acertos;
+class Resultado extends StatelessWidget {
+  static const routeName = 'Resultado';
+  const Resultado({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final argumentos = ModalRoute.of(context)?.settings.arguments as Argumentos;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -21,17 +26,17 @@ class Resultado extends StatelessWidget {
                 'Resultado',
                 style: TextStyle(fontSize: 20),
               ),
-              Text('Você acertou\n $acertos de 10\n perguntas',
+              Text('Você acertou\n ${argumentos.acertos} de 10\n perguntas',
                   style: TextStyle(fontSize: 20)),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    print('clicou');
+                    Navigator.pushNamed(context, 'Quiz');
                   },
                   child: Text(
                     'Jogar Novamente',
-                    style: TextStyle(fontSize: 35),
+                    style: TextStyle(fontSize: 30),
                   ),
                   style: ElevatedButton.styleFrom(padding: EdgeInsets.all(20)),
                 ),
